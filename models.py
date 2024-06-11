@@ -1,4 +1,4 @@
-from mongoengine import Document, StringField, ListField, ReferenceField, connect
+from mongoengine import Document, StringField, ListField, ReferenceField, connect, BooleanField
 
 # Підключення до MongoDB Atlas
 connect(
@@ -18,3 +18,8 @@ class Quote(Document):
     tags = ListField(StringField())
     author = ReferenceField(Author)
     quote = StringField(required=True)
+
+class Contact(Document):
+    fullname = StringField(required=True)
+    email = StringField(required=True)
+    email_sent = BooleanField(default=False)
